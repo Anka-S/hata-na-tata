@@ -34,7 +34,7 @@ if os.path.isfile("env.py"):
 else:
     DEBUG = False
     
-ALLOWED_HOSTS = ['https://8000-ankas-hatanatata-2lzg1uti0jj.ws.codeinstitute-ide.net/', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-ankas-hatanatata-2lzg1uti0jj.ws.codeinstitute-ide.net', '.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['https://*.codeinstitute-ide.net', 'https://*.herokuapp.com']
 
 
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -95,9 +96,8 @@ WSGI_APPLICATION = 'hatanatata.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
+    'default':  dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    
 }
 
 
