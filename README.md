@@ -64,14 +64,20 @@ __User Stories:__
 
 __Browser View:__
 
-![Browser view of home page for logged in user]()
-
-![Browser view of home page for logged out user]()
-
+![Browser view of home page for logged in user](docs/wireframes/home-loggedin.webp)
+![Browser view of home page for logged out user](docs/wireframes/home.webp)
+![Browser view of menu page](docs/wireframes/menu.webp)
+![Browser view of reviews page for logged in user](docs/wireframes/reviews-loggedin.webp)
+![Browser view of reviews page for logged out user](docs/wireframes/reviews.webp)
+![Signup form](docs/wireframes/signup.webp)
+![Form for writing review](docs/wireframes/reviewform.webp)
 
 __Phone View:__
-
-
+![Phone view of home page for logged in user](docs/wireframes/mhome-loggedin.webp)
+![Phone view of home page for logged out user](docs/wireframes/mhome.webp)
+![Phone view of menu page](docs/wireframes/mmenu.webp)
+![Phone view of reviews page for logged in user](docs/wireframes/mreviews-loggedin.webp)
+![Phone view of reviews page for logged out user](docs/wireframes/mreviews.webp)
 
 ## Features 
 
