@@ -12,3 +12,8 @@ body {
     font-weight: 500;
 
 }
+
+#logoImage {
+height: 50vh;
+width: 50vh;
+}
