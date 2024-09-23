@@ -33,7 +33,8 @@ if os.path.isfile("env.py"):
     DEBUG = True
 else:
     DEBUG = False
-    
+
+DEBUG = True   
 ALLOWED_HOSTS = ['8000-ankas-hatanatata-2lzg1uti0jj.ws.codeinstitute-ide.net', '.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['https://*.codeinstitute-ide.net', 'https://*.herokuapp.com']
 
