@@ -3,13 +3,32 @@
 
 {% block content %}
 <!-- Introduction -->
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid m-0">
+    <div class="row opacity">
         <div class="col-md-4 d-md-block d-none offset-md-4" id="logoImage">
             <img src="{% static 'media/logo-text.webp' %}" alt="Logo" class = "img-fluid" />
         </div>
     </div>
+    <!--Main content-->
+    <div class="row">
+        <div class="col-12">
+ <div class="text-center px-2 m-0" id="intro">
+    <p><strong>Welcome</strong> to our ethnic Ukrainian restaurant, where the rich flavors of traditional cuisine
+        come to life!</p>
+    <p>Embark on a culinary journey through Ukraine's most beloved dishes. Savour the hearty warmth of our signature
+        <em>borsch</em>, delight in the pillowy softness of <em>vareniki,</em> indulge in the comforting embrace of
+        <em>galushki,</em> and refresh yourself with the sweet notes of <em>uzvar</em>. Our menu boasts these
+        classics and many more treasures of Ukrainian gastronomy.</p>
+    <p>Step into a world of Ukrainian hospitality as you're surrounded by authentic décor that transports you to the
+        heart of Eastern Europe. Let the melodious strains of Ukrainian folk music enhance your dining experience,
+        creating an immersive atmosphere.</p>
+    <p>As we say in Ukraine, <strong>"Laskavo prosymo!" (Welcome!)</strong> to our restaurant, and
+        <strong>"Smachnoho!" (Bon appétit!) </strong> as you embark on your culinary adventure.</p>
 </div>
+        </div>
+    </div>
+</div>
+ 
 
 <!-- index.html content ends here -->
 {% endblock %}
