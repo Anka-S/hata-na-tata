@@ -3,11 +3,38 @@
 
 {% block content %}
 <div class="container-fluid m-0">
-    <div class="row opacity">
+    <div class="row">
         <div class="col-md-4 offset-md-4">
             <h1 class="text-center">MENU</h1>
         </div>
     </div>
+    <!-- Menu for tablets and desktops -->
+    <div class="row">
+        <div class="col-12 d-sm-block d-none">
+        <ul class="list-group list-group-horizontal text-center opacity menu">
+            <li><a href="#starters" class="list-group-item">STARTERS</a></li>
+            <li><a href="#main" class="list-group-item">MAIN</a></li>
+            <li><a href="#salads" class="list-group-item">SALADS</a></li>
+            <li><a href="#desserts" class="list-group-item">DESSRETS</a></li>
+            <li><a href="#drinks" class="list-group-item">DRINKS</a></li>
+        </ul>
+    </div>
+    </div>
+    <!-- Menu for mobile devices -->
+    <div class="row">
+        <div class="col-12 d-block d-sm-none">
+            <div class="scrollmenu">
+        <ul class="list-group list-group-horizontal text-center opacity" id="menuMobile">
+            <li><a href="#starters" class="list-group-item">STARTERS</a></li>
+            <li><a href="#main" class="list-group-item">MAIN</a></li>
+            <li><a href="#salads" class="list-group-item">SALADS</a></li>
+            <li><a href="#desserts" class="list-group-item">DESSRETS</a></li>
+            <li><a href="#drinks" class="list-group-item">DRINKS</a></li>
+        </ul>
+    </div>
+        </div>
+    </div>
+
 </div>
  
 
