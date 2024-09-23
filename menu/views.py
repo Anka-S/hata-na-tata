@@ -13,9 +13,14 @@ class MenuPage(TemplateView):
     template_name = 'menu/menu.html'
 
 def menu_view(request):     
-    sections = MenuSection.objects.all()
-    items = MenuItem.objects.all()   
-    return render(request, 'menu.html', {
-        'sections': sections,
-        'items': items,
-        })
+    menu_sections = MenuSection.objects.all()
+    menu_items = MenuItem.objects.all().select_related('section')  
+
+    print(f"Sections: {menu_sections.count()}")
+    print(f"Items: {menu_items.count()}")
+
+    context = {
+        "menu_sections" : menu_sections,
+        "menu_items" : menu_items,
+    } 
+    return render(request, 'menu/menu.html', context)

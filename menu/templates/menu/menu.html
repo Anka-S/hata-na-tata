@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 <div class="container-fluid m-0">
     <div class="row">
@@ -11,31 +10,53 @@
     <!-- Menu for tablets and desktops -->
     <div class="row">
         <div class="col-12 d-sm-block d-none">
-        <ul class="list-group list-group-horizontal text-center opacity menu">
-            <li><a href="#starters" class="list-group-item">STARTERS</a></li>
-            <li><a href="#main" class="list-group-item">MAIN</a></li>
-            <li><a href="#salads" class="list-group-item">SALADS</a></li>
-            <li><a href="#desserts" class="list-group-item">DESSRETS</a></li>
-            <li><a href="#drinks" class="list-group-item">DRINKS</a></li>
-        </ul>
-    </div>
+            <ul class="list-group list-group-horizontal text-center opacity menu">
+                {%  for section in menu_sections %}
+                <li><a href="#{{ section.title|lower}}" class="list-group-item menu-item" data-target="{{ section.title|lower}}">{{ section.title|upper}}</a></li>
+            {%  endfor %}
+            </ul>
+        </div>
     </div>
     <!-- Menu for mobile devices -->
     <div class="row">
         <div class="col-12 d-block d-sm-none">
             <div class="scrollmenu">
-        <ul class="list-group list-group-horizontal text-center opacity" id="menuMobile">
-            <li><a href="#starters" class="list-group-item">STARTERS</a></li>
-            <li><a href="#main" class="list-group-item">MAIN</a></li>
-            <li><a href="#salads" class="list-group-item">SALADS</a></li>
-            <li><a href="#desserts" class="list-group-item">DESSRETS</a></li>
-            <li><a href="#drinks" class="list-group-item">DRINKS</a></li>
-        </ul>
-    </div>
+                <ul class="list-group list-group-horizontal text-center opacity" id="menuMobile">
+                    {%  for section in menu_sections %}
+                    <li><a href="#{{ section.title|lower}}" class="list-group-item menu-item" data-target="{{ section.title|lower}}">{{ section.title|upper}}</a></li>
+                {%  endfor %}
+                    </ul>
+            </div>
         </div>
     </div>
+{% for section in menu_sections %}
+<div class="menu-content {% if forloop.first %}d-block{% else %}d-none{% endif %}" id="{{ section.title|lower }}">
+    <div class="menu-items">
+        {% for item in menu_items %}
+        {% if item.section == section %}
+                    <div class="menu-item">
+                            <h3>{{ item.title }}</h3>
+                        <div class="image-container">
+                            {% if "placeholder" in item.image.url %}
+                                <img src="{% static 'media/default.jpg' %}" alt="placeholder-image" class="menu-item-image">
+                            {% else %}
+                            <img class="menu-item-image" src=" {{ item.image.url }}"
+    alt="{{ item.title }}">
+                                {% endif %}
+                            <p>{{ item.description }}</p>
+                            <p>Ingredients: {{ item.ingredients }}</p>
+                            <p>Price: ${{ item.price }} &pound;</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 </div>
- 
+
+</div>
+
 
 {% endblock %}
