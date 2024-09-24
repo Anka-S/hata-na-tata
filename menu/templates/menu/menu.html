@@ -10,10 +10,11 @@
     <!-- Menu for tablets and desktops -->
     <div class="row">
         <div class="col-12 d-sm-block d-none">
-            <ul class="list-group list-group-horizontal text-center opacity menu">
-                {%  for section in menu_sections %}
-                <li><a href="#{{ section.title|lower}}" class="list-group-item menu-item" data-target="{{ section.title|lower}}">{{ section.title|upper}}</a></li>
-            {%  endfor %}
+            <ul class="list-group list-group-horizontal text-center menu">
+                {% for section in menu_sections %}
+                <li><a href="#{{ section.title|lower}}" class="list-group-item menu-item"
+                        data-target="{{ section.title|lower}}">{{ section.title|upper}}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -21,42 +22,39 @@
     <div class="row">
         <div class="col-12 d-block d-sm-none">
             <div class="scrollmenu">
-                <ul class="list-group list-group-horizontal text-center opacity" id="menuMobile">
-                    {%  for section in menu_sections %}
-                    <li><a href="#{{ section.title|lower}}" class="list-group-item menu-item" data-target="{{ section.title|lower}}">{{ section.title|upper}}</a></li>
-                {%  endfor %}
-                    </ul>
+                <ul class="list-group list-group-horizontal text-center" id="menuMobile">
+                    {% for section in menu_sections %}
+                    <li><a href="#{{ section.title|lower}}" class="list-group-item menu-item"
+                            data-target="{{ section.title|lower}}">{{ section.title|upper}}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
-{% for section in menu_sections %}
-<div class="menu-content {% if forloop.first %}d-block{% else %}d-none{% endif %}" id="{{ section.title|lower }}">
-    <div class="menu-items">
+    {% for section in menu_sections %}
+    <!-- Menu content -->
+    <div class="menu-content {% if forloop.first %}d-block{% else %}d-none{% endif %}" id="{{ section.title|lower }}">
         {% for item in menu_items %}
         {% if item.section == section %}
-                    <div class="menu-item">
-                            <h3>{{ item.title }}</h3>
-                        <div class="image-container">
-                            {% if "placeholder" in item.image.url %}
-                                <img src="{% static 'media/default.jpg' %}" alt="placeholder-image" class="menu-item-image">
-                            {% else %}
-                            <img class="menu-item-image" src=" {{ item.image.url }}"
-    alt="{{ item.title }}">
-                                {% endif %}
-                            <p>{{ item.description }}</p>
-                            <p>Ingredients: {{ item.ingredients }}</p>
-                            <p>Price: ${{ item.price }} &pound;</p>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+        <div class="row menu-item">
+            <div class=" col-4">
+                {% if item.image %}
+                <img class="img-fluid" src=" {{ item.image.url }}" alt="{{ item.title }}">
+                {% endif %}
+            </div>
+            <div class="col-5">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.description | safe}}</p>
+                <p>Ingredients: {{ item.ingredients | safe}}</p>
+            </div>
+            <div class="col-3">
+                {{ item.price }} &pound;
             </div>
         </div>
+        {% endif %}
+        {% endfor %}
+    </div>
     {% endfor %}
 </div>
-
-</div>
-
-</div>
-
 
 {% endblock %}

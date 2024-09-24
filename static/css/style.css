@@ -60,6 +60,13 @@ opacity: 0.55;
     border: transparent;
 }
 
+.list-group-item.active {
+    z-index: 2;
+    color: #9e9d9bf3;
+    background-color: #ffffff00;
+    border-color: #e0e4e900;
+}
+
 .scrollmenu {
     overflow-x: auto;
     white-space: nowrap;
