@@ -88,3 +88,15 @@ opacity: 0.55;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+
+
+
+@media screen and (min-width: 1024px){
+
+.img-container {
+    height: 30vh;
+    width: 30vh;
+    margin-left: 7rem;
+}
+}

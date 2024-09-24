@@ -33,21 +33,21 @@
     </div>
     {% for section in menu_sections %}
     <!-- Menu content -->
-    <div class="menu-content {% if forloop.first %}d-block{% else %}d-none{% endif %}" id="{{ section.title|lower }}">
+    <div class="menu-content mt-5 {% if forloop.first %}d-block{% else %}d-none{% endif %}" id="{{ section.title|lower }}">
         {% for item in menu_items %}
         {% if item.section == section %}
-        <div class="row menu-item">
-            <div class=" col-4">
+        <div class="row menu-item" >
+            <div class=" col-4 img-container">
                 {% if item.image %}
-                <img class="img-fluid" src=" {{ item.image.url }}" alt="{{ item.title }}">
+                <img class="img-fluid {% if 'placeholder' in item.image.url %} d-none {% else %} d-block {% endif %}" src=" {{ item.image.url }}" alt="{{ item.title }}">
                 {% endif %}
             </div>
-            <div class="col-5">
+            <div class="col-5 text-center">
                 <h4>{{ item.title }}</h4>
                 <p>{{ item.description | safe}}</p>
                 <p>Ingredients: {{ item.ingredients | safe}}</p>
             </div>
-            <div class="col-3">
+            <div class="col-3 text-center">
                 {{ item.price }} &pound;
             </div>
         </div>
