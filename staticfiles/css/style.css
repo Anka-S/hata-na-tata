@@ -9,6 +9,7 @@ body {
     color: rgb(255, 255, 255);
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    min-height: 100vh;
 
 }
 
@@ -60,6 +61,13 @@ opacity: 0.55;
     border: transparent;
 }
 
+.list-group-item.active {
+    z-index: 2;
+    color: #9e9d9bf3;
+    background-color: #ffffff00;
+    border-color: #e0e4e900;
+}
+
 .scrollmenu {
     overflow-x: auto;
     white-space: nowrap;
@@ -80,4 +88,80 @@ opacity: 0.55;
 .scrollmenu {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+.ingredients-text {
+    font-size: small;
+    font-style: italic;
+    opacity: .7;
+}
+
+.description-text {
+    font-size: smaller;
+    background-color: transparent;
+    color: #fff;
+}
+
+.img-container {
+    overflow: hidden;
+}
+
+.img-zoom {
+    object-fit: cover;
+    /* transition: transform 0.1s ease; */
+    cursor: pointer;
+}
+
+.img-zoom.zoomed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  max-width: 50vw;
+  max-height: 50vh;
+  width: auto;
+  height: auto;
+  z-index: 1000;
+}
+
+.price{
+    font-size: .8rem;
+}
+
+.btn-signup {
+    background-color: rgba(101, 98, 98, 0.567);
+    color: #fff;
+}
+
+.auth-model {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 200;
+    color: #d8cfcfc9;
+}
+
+.auth-model h3 {
+    color: #fff;
+}
+
+.auth-model a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    opacity: 1;
+}
+@media screen and (min-width: 1024px){
+
+.img-container {
+    height: 30vh;
+    width: 30vh;
+    margin-left: 7rem;
+}
+.price{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.description-text {
+    text-align: center;
+}
+
 }
