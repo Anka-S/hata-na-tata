@@ -9,6 +9,7 @@ body {
     color: rgb(255, 255, 255);
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    min-height: 100vh;
 
 }
 
@@ -89,8 +90,43 @@ opacity: 0.55;
     scrollbar-width: none;  /* Firefox */
 }
 
+.ingredients-text {
+    font-size: small;
+    font-style: italic;
+    opacity: .7;
+}
 
+.description-text {
+    font-size: smaller;
+    background-color: transparent;
+    color: #fff;
+}
 
+.img-container {
+    overflow: hidden;
+}
+
+.img-zoom {
+    object-fit: cover;
+    /* transition: transform 0.1s ease; */
+    cursor: pointer;
+}
+
+.img-zoom.zoomed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  max-width: 50vw;
+  max-height: 50vh;
+  width: auto;
+  height: auto;
+  z-index: 1000;
+}
+
+.price{
+    font-size: .8rem;
+}
 
 @media screen and (min-width: 1024px){
 
@@ -99,4 +135,13 @@ opacity: 0.55;
     width: 30vh;
     margin-left: 7rem;
 }
+.price{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.description-text {
+    text-align: center;
+}
+
 }

@@ -37,18 +37,18 @@
         {% for item in menu_items %}
         {% if item.section == section %}
         <div class="row menu-item" >
-            <div class=" col-4 img-container">
+            <div class=" col-md-4 col-3 img-container pt-4">
                 {% if item.image %}
-                <img class="img-fluid {% if 'placeholder' in item.image.url %} d-none {% else %} d-block {% endif %}" src=" {{ item.image.url }}" alt="{{ item.title }}">
+                <img class="img-fluid img-zoom {% if 'placeholder' in item.image.url %} d-none {% else %} d-block {% endif %}" src=" {{ item.image.url }}" alt="{{ item.title }}">
                 {% endif %}
             </div>
-            <div class="col-5 text-center">
-                <h4>{{ item.title }}</h4>
-                <p>{{ item.description | safe}}</p>
-                <p>Ingredients: {{ item.ingredients | safe}}</p>
+            <div class="col-md-5 col-7">
+                <h4 class="text-center"> {{ item.title }}</h4>
+                <div class="description-text">{{ item.description | safe}}</div>
+                <div class="ingredients-text">Ingredients: {{ item.ingredients | safe}}</div>
             </div>
-            <div class="col-3 text-center">
-                {{ item.price }} &pound;
+            <div class="col-md-3 col-2 p-0">
+                <h4 class="price">{{ item.price }} &pound;</h4>
             </div>
         </div>
         {% endif %}
