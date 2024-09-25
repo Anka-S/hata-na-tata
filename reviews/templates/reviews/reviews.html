@@ -3,17 +3,17 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="container">
+<div class="container m-0 py-0">
   {% if user.is_authenticated %}
-  <p><a href="#write-review" class="link">Leave a review <i class="fa-regular fa-comments"></i></a></p>
+  <p><a href="#write-review" class="m-3 link">Leave a review <i class="fa-regular fa-comments"></i></a></p>
   {% else %}
-  <p><a href="{{ login_url }}" class="link">Log in</a> to leave a review</p>
+  <p><a href="{{ login_url }}" class="m-3 link">Log in</a> to leave a review</p>
   {% endif %}
   <h1 class="text-center mb-4">Reviews</h1>
-  <div class="row">
+  <div class="row m-0">
     {% for review in reviews %}
     <div class="col-12 col-md-6 col-lg-4 mb-4">
-      <div class="card h-100 {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}">
+      <div class="card m-0 h-100 {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}">
         <div class="card-body">
           <div class="mb-2">
             {% if review.score == 1 %}
@@ -70,9 +70,9 @@
 
 <!-- Creating New Review -->
 <div class="container mt-5">
-  <div class="row">
+  <div class="row m-0">
     <div class="col-md-8 col-lg-6 mx-auto">
-      <div class="card">
+      <div class="card m-0">
         <div class="card-body" id="write-review">
           {% if user.is_authenticated %}
           <h3 class="card-title">Leave a review:</h3>
