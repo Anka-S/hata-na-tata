@@ -3,91 +3,99 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="row text-center">
-  <h1>Reviews</h1>
-  <div class="col-12 col-md-6 mt3 offset-md-3 text-center">
-    
+<div class="container">
+  {% if user.is_authenticated %}
+  <p><a href="#write-review" class="link">Leave a review <i class="fa-regular fa-comments"></i></a></p>
+  {% else %}
+  <p><a href="{{ login_url }}" class="link">Log in</a> to leave a review</p>
+  {% endif %}
+  <h1 class="text-center mb-4">Reviews</h1>
+  <div class="row">
     {% for review in reviews %}
-    <div class="p-2 
-        {% if not review.approved and review.author == user %}
-        faded{% elif not review.approved %} d-none{% endif %}">
-        <div>
-          <!-- Display a number of stars based on review score -->
-{% if review.score == 1 %}
-<i class="fa-solid fa-star"></i>
-{% elif review.score == 2 %}
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-{% elif review.score == 3 %}
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-{% elif review.score == 4 %}
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-{% elif review.score == 5 %}
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-{% endif %}
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}">
+        <div class="card-body">
+          <div class="mb-2">
+            {% if review.score == 1 %}
+            <i class="fa-solid fa-star"></i>
+            {% elif review.score == 2 %}
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            {% elif review.score == 3 %}
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            {% elif review.score == 4 %}
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            {% elif review.score == 5 %}
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            {% endif %}
+          </div>
+          <h3 class="card-title">{{ review.title }}</h3>
+          <div id="review{{ review.id }}" class="card-text">
+            {{ review.body | linebreaks }}
+          </div>
+          <p class="card-text">
+            <small class="text-muted">
+              Written by: {{ review.author }} on {{ review.created_on }}
+            </small>
+          </p>
+          {% if not review.approved and review.author == user %}
+          <p class="approval text-warning">
+            This review is awaiting approval
+          </p>
+          {% endif %}
         </div>
-      
-      <h3>{{ review.title}} </h3>
-      
-      <div id="review{{ review.id }}">
-        {{ review.body | linebreaks }}
+        {% if user.is_authenticated and review.author == user %}
+        <div class="card-footer bg-transparent">
+          <a href="{% url 'review_edit' review.id %}" class="edit_btn btn btn-success btn-sm">Edit</a>
+          <form method="post" action="{% url 'review_delete' review.id %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="delete_btn btn btn-danger btn-sm">Delete</button>
+          </form>
+        </div>
+        {% endif %}
       </div>
-      <p class="font-weight-bold"> Written by:
-        {{ review.author }}
-        <span class="font-weight-normal">
-          {{ review.created_on }}
-        </span>
-      </p>
-      {% if not review.approved and review.author == user %}
-      <p class="approval">
-        This review is awaiting approval
-      </p>
-      {% endif %}
-      {% if user.is_authenticated and review.author == user %}
-      <a href="{% url 'review_edit' review.id %}" class="edit_btn btn btn-success">Edit</a>      
-      <form method="post" action="{% url 'review_delete' review.id %}" style="display: inline;">
-        {% csrf_token %}
-        <button type="submit" class="delete_btn btn btn-danger">Delete</button>
-    </form>
-      {% endif %}
-
     </div>
     {% endfor %}
   </div>
 </div>
+
 <!-- Creating New Review -->
-<div class="col-md-4 col-12 offset-md-4 mt-3">
-  <div class="card-body">
-    {% if user.is_authenticated %}
-    <h3>Leave a review:</h3>
-    <p class="opacity">Posting as: {{ user.username }}</p>
-    <form id="reviewForm" method="post" style="margin-top: 1.3em;">
-      <div class="form-group d-inline">
-        <h4>Rating:</h4>
-        <div class="star-rating">
-          {% for radio in review_form.score %}
-            {{ radio.tag }}
-            <label for="{{ radio.id_for_label }}"></label>
-          {% endfor %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 col-lg-6 mx-auto">
+      <div class="card">
+        <div class="card-body" id="write-review">
+          {% if user.is_authenticated %}
+          <h3 class="card-title">Leave a review:</h3>
+          <p class="opacity">Posting as: {{ user.username }}</p>
+          <form id="reviewForm" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <h4>Rating:</h4>
+              <div class="star-rating">
+                {% for radio in review_form.score %}
+                  {{ radio.tag }}
+                  <label for="{{ radio.id_for_label }}"></label>
+                {% endfor %}
+              </div>
+            </div>
+            {{ review_form.title|as_crispy_field }}
+            {{ review_form.body|as_crispy_field }}
+            <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>          
+          </form>
+          {% endif %}
         </div>
       </div>
-      {% csrf_token %}
-      {{ review_form.title|as_crispy_field }}
-      {{ review_form.body|as_crispy_field }}
-      <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
-    </form>
-    {% else %}
-    <p>Log in to leave a review</p>
-    {% endif %}
+    </div>
   </div>
 </div>
 
