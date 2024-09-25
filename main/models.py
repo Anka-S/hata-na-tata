@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -21,11 +22,13 @@ TIME_CHOICES = (
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     name = models.CharField(max_length=100, null=False, blank=False)
-    phone = models.CharField(max_length=20, default='', null=False)
+    phone = models.CharField(max_length=11, default='', null=False, validators=[RegexValidator(r"^[0-9]+$", "You can put only numbers and '+' symbol!")])
     email = models.EmailField(null=False)
-    date = models.DateField(default=datetime.now)
+    day = models.DateField(default=datetime.now, blank=True)
     time = models.CharField(max_length=10, choices=TIME_CHOICES, default="6 PM")
     guests = models.CharField(max_length=50, choices=GUESTS_CHOICES, default="2")
 
+    class Meta:
+        ordering = ["-day"]
     def __str__(self):
-        return f"{self.name} | {self.date} | {self.time}"
+        return f"{self.name} | {self.day} | {self.time}"

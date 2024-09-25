@@ -97,14 +97,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 });
-const form = document.getElementById('booking-form');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Perform client-side validation here
-        
-        // If validation passes, submit the form
-        this.submit();
-    });
 })
