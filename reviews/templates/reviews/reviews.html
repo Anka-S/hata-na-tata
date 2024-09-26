@@ -12,8 +12,9 @@
   <h1 class="text-center mb-4">Reviews</h1>
   <div class="row m-0">
     {% for review in reviews %}
+    {% if review.approved or review.author == user %}
     <div class="col-12 col-md-6 col-lg-4 mb-4">
-      <div class="card m-0 h-100 {% if not review.approved and review.author == user %}faded{% elif not review.approved %}d-none{% endif %}">
+      <div class="card m-0 h-100 {% if not review.approved and review.author == user %}faded{% endif %}">
         <div class="card-body">
           <div class="mb-2">
             {% if review.score == 1 %}
@@ -52,7 +53,7 @@
             This review is awaiting approval
           </p>
           {% endif %}
-        </div>
+        <!-- </div> -->
         {% if user.is_authenticated and review.author == user %}
         <div class="card-footer bg-transparent">
           <a href="{% url 'review_edit' review.id %}" class="edit_btn btn btn-success btn-sm">Edit</a>
@@ -63,7 +64,9 @@
         </div>
         {% endif %}
       </div>
+      </div>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
 </div>

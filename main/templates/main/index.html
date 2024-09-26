@@ -30,6 +30,8 @@
         </div>
     </div>
     <div id="booking-section">
+        <div class="row">
+            <div class="col-md-4 col-10 offset-md-4 offset-1">
         {% if user.is_authenticated %}
             <h2>Make a Reservation</h2>
             <form method="post" id="booking-form">
@@ -38,8 +40,10 @@
                 <button type="submit" class="btn btn-primary">Book Now</button>
             </form>
         {% else %}
-            <p>Please <a href="{{ login_url }}">log in</a> to make a reservation.</p>
+            <p>Please <a href="{{ login_url }}" class="link">log in</a> to make a reservation.</p>
         {% endif %}
+    </div>
+</div>
     </div>
 
 <!-- index.html content ends here -->

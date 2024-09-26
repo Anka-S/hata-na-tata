@@ -44,6 +44,11 @@ def review_edit(request, review_id):
         messages.error(request, 'You are not authorized to edit this review.')
         return redirect('reviews')
 
+    # if request.user.is_authenticated:
+    #     reviews = Review.objects.filter(Q(approved=True) | Q(author=request.user))
+    # else:
+    #     reviews = Review.objects.filter(approved=True)
+
     if request.method == "POST":
         review_form = ReviewForm(request.POST, instance=review)
         if review_form.is_valid():
