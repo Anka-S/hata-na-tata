@@ -14,7 +14,7 @@
     <!--Main content-->
     <div class="row">
         <div class="col-12">
- <div class="text-center px-2 m-0" id="intro">
+ <div class="container-fluid text-center px-2 card w-75" id="intro">
     <p><strong>Welcome</strong> to our ethnic Ukrainian restaurant, where the rich flavors of traditional cuisine
         come to life!</p>
     <p>Embark on a culinary journey through Ukraine's most beloved dishes. Savour the hearty warmth of our signature
@@ -29,23 +29,14 @@
 </div>
         </div>
     </div>
-    <div id="booking-section" class="card">
-        <div class="row">
-            <div class="col-md-4 col-10 offset-md-4 offset-1">
-        {% if user.is_authenticated %}
-            <h2 class="text-center">Make a Reservation</h2>
-            <form method="post" id="booking-form">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="btn btn-secondary btn-signup mb-2">Book Now</button>
-            </form>
-        {% else %}
-            <p>Please <a href="{{ login_url }}" class="link text-center">log in</a> to make a reservation.</p>
-        {% endif %}
+    {% if not user.is_authenticated %}
+    <p class="text-center">Please <a href="{{ login_url }}" class="link text-center">log in</a> to make a reservation.</p>
+    {% else %}
+    <p class="text-center"><a href="{% url 'booking' %}" class="link">Make a Reservation</a></p>
+    {% endif %}
     </div>
 </div>
-    </div>
-</div>
+
 
 <!-- index.html content ends here -->
 {% endblock %}

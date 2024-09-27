@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
      // Star rating functionality
      const starRating = document.querySelector('.star-rating');
      if (starRating){
-     const stars = starRating.querySelectorAll('radio');
+     const stars = starRating.querySelectorAll('input[type="radio"]');
      
      stars.forEach(star => {
          star.addEventListener('change', function() {
@@ -101,11 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let button of deleteButtons) {
         button.addEventListener("click", (e) => {
             let reviewId = e.target.getAttribute("review_id");
-            deleteConfirm.href = `reviews/delete_review/${reviewId}/`;
+            deleteConfirm.href = `reviews/delete_review/${reviewId}`;
             deleteModal.show();
         });
-    }
-   
-});
-
+    };
+})
+    
 

@@ -8,9 +8,10 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = ['name', 'email', 'day', 'time', 'guests', 'phone']
         widgets = {
-            'day': forms.DateInput(attrs={'type': 'date'}),
+            'day': forms.DateInput(attrs={'type': 'date', 'id':'id_day'}),
             'time': forms.Select(attrs={'class': 'form-input-field'}),
             'guests': forms.Select(attrs={'class': 'form-input-field'}),
+            'phone': forms.TextInput(attrs={'id': 'id_phone'}),
         }
 
     def __init__(self, *args, **kwargs):

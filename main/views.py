@@ -19,7 +19,7 @@ class HomePage(TemplateView):
     """
     template_name = 'main/index.html'
 
-def home(request):
+def booking(request):
     form = BookingForm()
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -33,9 +33,8 @@ def home(request):
             messages.error(request, 'You put incorrect values, please check all fields')
   
         
-    
     context = {
         'form': form,
     }
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/booking.html', context)
 
