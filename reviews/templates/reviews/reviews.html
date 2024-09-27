@@ -57,7 +57,7 @@
         {% if user.is_authenticated and review.author == user %}
         <div class="card-footer bg-transparent">
           <a href="{% url 'review_edit' review.id %}" class="edit_btn btn btn-success btn-sm">Edit</a>
-            <button class="delete_btn btn btn-delete btn-sm" data-review_id ="{{ review.id }}">Delete</button>         
+            <button class="delete_btn btn btn-delete btn-sm" review_id ="{{ review.id }}">Delete</button>         
         </div>
         
         {% endif %}
