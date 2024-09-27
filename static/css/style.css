@@ -140,6 +140,7 @@ opacity: 0.55;
 .auth-model {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-weight: 200;
+    width: 80%;
 }
 
 .edit_btn {
@@ -205,6 +206,9 @@ opacity: 0.55;
 
 .description-text {
     text-align: center;
+}
+.auth-model {
+    width: 50%;
 }
 
 }
