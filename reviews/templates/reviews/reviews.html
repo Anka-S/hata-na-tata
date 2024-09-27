@@ -53,15 +53,13 @@
             This review is awaiting approval
           </p>
           {% endif %}
-        <!-- </div> -->
+       
         {% if user.is_authenticated and review.author == user %}
         <div class="card-footer bg-transparent">
           <a href="{% url 'review_edit' review.id %}" class="edit_btn btn btn-success btn-sm">Edit</a>
-          <form method="post" action="{% url 'review_delete' review.id %}" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit" class="delete_btn btn btn-danger btn-sm">Delete</button>
-          </form>
+            <button class="delete_btn btn btn-delete btn-sm" data-review_id ="{{ review.id }}">Delete</button>         
         </div>
+        
         {% endif %}
       </div>
       </div>
@@ -102,4 +100,27 @@
   </div>
 </div>
 
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1"
+aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"
+        id="deleteModalLabel" style="color: black;">Delete review?</h5>
+      <button type="button" class="btn-close"
+        data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body" style="color: black;">
+      Are you sure you want to delete your review?
+      This action cannot be undone.
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary"
+        data-bs-dismiss="modal">Close</button>
+      <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+    </div>
+  </div>
+</div>
+</div>
 {% endblock %}

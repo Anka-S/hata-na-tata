@@ -39,23 +39,13 @@ def review_edit(request, review_id):
     """
     review = get_object_or_404(Review, pk=review_id)
 
-    # Check if the user is the author of the review
-    if review.author != request.user:
-        messages.error(request, 'You are not authorized to edit this review.')
-        return redirect('reviews')
-
-    # if request.user.is_authenticated:
-    #     reviews = Review.objects.filter(Q(approved=True) | Q(author=request.user))
-    # else:
-    #     reviews = Review.objects.filter(approved=True)
-
     if request.method == "POST":
         review_form = ReviewForm(request.POST, instance=review)
         if review_form.is_valid():
             updated_review = review_form.save(commit=False)
             updated_review.approved = False
             updated_review.save()
-            messages.success(request, 'Review Updated!')
+            messages.success(request, 'Review updated and awaiting approval!')
             return redirect('reviews')
         else:
             messages.error(request, 'Error updating review. Please check the form.')
@@ -75,11 +65,10 @@ def review_delete(request, review_id):
     """
     review = get_object_or_404(Review, pk=review_id)
 
-    # Check if the user is the author of the review
-    if request.method == 'POST':
+    if review.author == request.user:
         review.delete()
-        messages.success(request, 'Review deleted successfully.')
+        messages.add_message(request, messages.SUCCESS, 'Review deleted successfully.')
     else:
-        messages.error(request, 'Invalid request method for deleting review.')
+        messages.add_message(request, messages.ERROR, 'Invalid request method for deleting review.')
 
-    return redirect('reviews')
+    return HttpResponseRedirect(reverse('reviews'))
