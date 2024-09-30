@@ -12,11 +12,10 @@ class MenuSectionAdmin(SummernoteModelAdmin):
 
 @admin.register(MenuItem)
 
-class MenuItemAdmin(SummernoteModelAdmin):
+class MenuItemAdmin(admin.ModelAdmin):
 
     list_display = ('title', 'ingredients', 'price', 'section', 'created_on')
     search_fields = ['title', 'ingredients']
-    summernote_fields = ('description')
     list_filter = ['section', 'created_on']
     list_editable = ['price']
 
