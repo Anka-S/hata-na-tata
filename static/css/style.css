@@ -189,7 +189,6 @@ opacity: 0.55;
 }
 
 .card {
-    /* transition: all 0.3s ease; */
     background-color: rgba(0, 0, 0, 0.516);
     border: none;
     border-radius: 2%;

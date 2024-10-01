@@ -8,35 +8,115 @@
 <div class="container-fluid m-0">
     <div class="row opacity">
         <div class="col-md-4 d-md-block d-none offset-md-4" id="logoImage">
-            <img src="{% static 'media/logo-text.webp' %}" alt="Logo" class = "img-fluid" />
+            <img src="{% static 'media/logo-text.webp' %}" alt="Logo" class="img-fluid" />
         </div>
     </div>
     <!--Main content-->
     <div class="row">
         <div class="col-12">
- <div class="container-fluid text-center px-2 card w-75" id="intro">
-    <p><strong>Welcome</strong> to our ethnic Ukrainian restaurant, where the rich flavors of traditional cuisine
-        come to life!</p>
-    <p>Embark on a culinary journey through Ukraine's most beloved dishes. Savour the hearty warmth of our signature
-        <em>borsch</em>, delight in the pillowy softness of <em>vareniki,</em> indulge in the comforting embrace of
-        <em>galushki,</em> and refresh yourself with the sweet notes of <em>uzvar</em>. Our menu boasts these
-        classics and many more treasures of Ukrainian gastronomy.</p>
-    <p>Step into a world of Ukrainian hospitality as you're surrounded by authentic décor that transports you to the
-        heart of Eastern Europe. Let the melodious strains of Ukrainian folk music enhance your dining experience,
-        creating an immersive atmosphere.</p>
-    <p>As we say in Ukraine, <strong>"Laskavo prosymo!" (Welcome!)</strong> to our restaurant, and
-        <strong>"Smachnoho!" (Bon appétit!) </strong> as you embark on your culinary adventure.</p>
-</div>
+            <div class="container-fluid text-center px-2 card w-75">
+                <div id="intro" class="mt-3">
+                    <p><strong>Welcome</strong> to our ethnic Ukrainian restaurant, where the rich flavors of
+                        traditional
+                        cuisine
+                        come to life!</p>
+                    <p>Embark on a culinary journey through Ukraine's most beloved dishes. Savour the hearty warmth of
+                        our
+                        signature
+                        <em>borsch</em>, delight in the pillowy softness of <em>vareniki,</em> indulge in the comforting
+                        embrace of
+                        <em>galushki,</em> and refresh yourself with the sweet notes of <em>uzvar</em>. Our menu boasts
+                        these
+                        classics and many more treasures of Ukrainian gastronomy.
+                    </p>
+                    <p>Step into a world of Ukrainian hospitality as you're surrounded by authentic décor that
+                        transports
+                        you to the
+                        heart of Eastern Europe. Let the melodious strains of Ukrainian folk music enhance your dining
+                        experience,
+                        creating an immersive atmosphere.</p>
+                    <p>As we say in Ukraine, <strong>"Laskavo prosymo!" (Welcome!)</strong> to our restaurant, and
+                        <strong>"Smachnoho!" (Bon appétit!) </strong> as you embark on your culinary adventure.
+                    </p>
+                </div>
+                <!-- Images of interier -->
+                <div class="row mb-3">
+                    <div class="col-4 offset-2">
+                        <img src="{% static 'media/interier1.webp' %}" alt="Restaurant interier" class="img-fluid img-zoom">
+                    </div>
+                    <div class="col-4">
+                        <img src="{% static 'media/interier2.webp' %}" alt="Restaurant interier" class="img-fluid img-zoom">
+                    </div>
+                </div>
+                <!-- Condition for making a reservation -->
+                <div class="row my-5 mx-auto py-5">
+                    {% if user.is_authenticated %}
+                    <p class="text-center"><a href="{% url 'booking' %}" class="link">Click here </a>to book a table</p>
+                    {% else %}
+                    <p class="text-center">Please <a href="{{ login_url }}" class="link text-center">log in</a> to make
+                        a reservation.
+                    </p>
+                    {% endif %}
+                </div>
+                <!-- Contact section -->
+                <div class="row mb-4">
+                    <div class="col-md-5 col-12 mx-auto">
+                        <h5 class="text-center">Working hours</h5>
+                        <!-- Working hours -->
+                        <table class="mb-3 p-4 w-75 text-end">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Open</th>
+                                    <th></th>
+                                    <th>Close</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fs-6">
+                                    <td>Mon-Fri: </td>
+                                    <td class="fw-lighter">10:00</td>
+                                    <td class="text-center"> - </td>
+                                    <td class="fw-lighter"> 21:00</td>
+                                </tr>
+                                <tr class="fs-6">
+                                    <td>Weekend: </td>
+                                    <td class="fw-lighter">11:00</td>
+                                    <td class="text-center"> - </td>
+                                    <td class="fw-lighter"> 22:00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Get in touch -->
+                        <div class="mb-3">
+                            <h5 class="text-center">Contact Us:</h5>
+                            <span>Phone: </span>
+                            <span class="fs-6 fw-lighter">075 555 55 555</span>
+                            <br>
+                            <span>Email: </span>
+                            <a href="mailto: hatanatata@gmail.com" class="link fs-6 fw-lighter">hatanatata@gmail.com</a>
+                        </div>
+                        <!-- Address section -->
+                        <div class="mb-3">
+                            <h5 class="text-center">Address:</h5>
+                            <p class="fs-6 fw-lighter">Hata na Tata, <br> Cabot Circus
+                                Bond St S, <br> Bristol</p>
+                        </div>
+                    </div>
+                    <!-- Map with location of restaurant -->
+                    <div class="col-md-6 col-12 mx-auto mb-3">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.992519890851!2d-2.5873366737198427!3d51.45829377180225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e708ced15cd%3A0x11d99c49c31a1395!2sCabot%20Circus!5e0!3m2!1sen!2suk!4v1721044052066!5m2!1sen!2suk"
+                            allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="Location of the restaurant" class="h-100 w-100 mb-4"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
-    {% if not user.is_authenticated %}
-    <p class="text-center">Please <a href="{{ login_url }}" class="link text-center">log in</a> to make a reservation.</p>
-    {% else %}
-    <p class="text-center"><a href="{% url 'booking' %}" class="link">Make a Reservation</a></p>
-    {% endif %}
-    </div>
 </div>
 
 
-<!-- index.html content ends here -->
 {% endblock %}
