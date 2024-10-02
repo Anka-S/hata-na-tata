@@ -11,7 +11,7 @@
   {% endif %}
   <h1 class="text-center mb-4">Reviews</h1>
   <!-- Reviews view -->
-  <div class="row m-0">
+  <div class="row m-0" >
     {% for review in reviews %}
     {% if review.approved or review.author == user %}
     <div class="col-12 col-md-6 col-lg-4 mb-4">

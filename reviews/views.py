@@ -24,7 +24,7 @@ def review_view(request):
             review.save()
             messages.add_message(request, messages.SUCCESS,
         'Review is submitted and awaiting approval')
-            return redirect('reviews')            
+            return redirect(reverse('reviews')+'#top')            
 
     context = {
         "reviews": reviews,
