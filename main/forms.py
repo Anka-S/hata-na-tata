@@ -21,6 +21,9 @@ class BookingForm(forms.ModelForm):
         self.fields['phone'].validators.append(MinLengthValidator(11))
     
     def clean_day(self):
+        """
+        Checks if the day is valid
+        """
         day = self.cleaned_data.get('day')
         today = day.today()
         if day < today:

@@ -3,7 +3,7 @@
 
 body {
     background: url("../media/bg.webp") no-repeat center center/cover;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
     width: 100%;
     color: rgb(255, 255, 255);
@@ -14,8 +14,15 @@ body {
 }
 
 .opacity {
-opacity: 0.55;
+    opacity: 0.55;
 }
+.alert {
+    background-color: #d7bbbbab;
+    color: black;
+    align-items: center;
+    justify-content: center;
+}
+
 
 #intro p {
     font-weight: 200;
@@ -29,27 +36,28 @@ opacity: 0.55;
     margin: 0 10px;
 }
 
-.list-group{
+.menu {
+    list-style: none;
+    justify-content: space-evenly;
+    align-self: center;
+}
+
+/* Sections list on menu page */
+.list-group {
     list-style: none;
     justify-content: center;
     align-self: center;
 }
 
-.menu {
-        list-style: none;
-        justify-content: space-evenly;
-        align-self: center;
-}
-
 .list-group a {
     color: #fff;
     padding: 0 15px;
- } 
+}
 
- .list-group a:hover { 
-     color: #9e9d9bf3;
-    border: 0; 
-} 
+.list-group a:hover {
+    color: #9e9d9bf3;
+    border: 0;
+}
 
 .list-group-item {
     background-color: transparent;
@@ -66,7 +74,8 @@ opacity: 0.55;
 .scrollmenu {
     overflow-x: auto;
     white-space: nowrap;
-    -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* for smooth scrolling on iOS */
 }
 
 #menuMobile {
@@ -81,8 +90,10 @@ opacity: 0.55;
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollmenu {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .ingredients-text {
@@ -106,6 +117,7 @@ opacity: 0.55;
     overflow: hidden;
 }
 
+/* Zooming images when you clicking on them */
 .img-zoom {
     object-fit: cover;
     transition: transform 0.3s ease;
@@ -113,18 +125,18 @@ opacity: 0.55;
 }
 
 .img-zoom.zoomed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2);
-  max-width: 50vw;
-  max-height: 50vh;
-  width: auto;
-  height: auto;
-  z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2);
+    max-width: 50vw;
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+    z-index: 1000;
 }
 
-.price{
+.price {
     font-size: .8rem;
 }
 
@@ -134,21 +146,19 @@ opacity: 0.55;
     font-weight: bold;
 }
 
-.link:hover{
+.link:hover {
     background-color: white;
     color: black;
 }
-.btn-signup {
-    background-color: rgba(101, 98, 98, 0.567);
-    color: #fff;
-}
 
+/* Styling authorisation models */
 .auth-model {
     font-family: 'Bricolage Grotesque', sans-serif;
     font-weight: 200;
     width: 80%;
 }
 
+/* Styling buttons */
 .edit_btn {
     background-color: #15734796;
     border-color: #124a30;
@@ -161,65 +171,90 @@ opacity: 0.55;
     color: white;
     padding: 0 10px;
 }
+
 .update-btn {
-    background-color: #13671e75;
+    background-color: #055910cc;
     border-color: #093f10f5;
 }
 
-.update-btn:hover{
+.update-btn:hover {
     border-color: #093f10f5;
     background-color: #0f4105e8;
 
 }
+
+.btn-primary:active {
+    background-color: #103b27;
+    border-color: #242b34;
+}
+
+.btn-signup {
+    background-color: rgba(101, 98, 98, 0.567);
+    color: #fff;
+}
+
+/* Styling stars-raiting on review page*/
 .star-rating {
     display: inline-flex;
     flex-direction: row-reverse;
     font-size: 0;
 }
+
 .star-rating input {
     display: none;
 }
+
 .star-rating label {
     font-size: 30px;
     color: #ddd;
     cursor: pointer;
 }
+
 .star-rating label:before {
     content: '★';
 }
 
+.faded {
+    opacity: 0.8;
+}
+
+.modal-content {
+    color: black;
+}
+
+/* Background for content */
 .card {
     background-color: rgba(0, 0, 0, 0.516);
     border: none;
     border-radius: 2%;
-  }
-  
-.faded {
-    opacity: 0.8;
-  }
-@media screen and (min-width: 1024px){
-
-.img-container {
-    height: 30vh;
-    width: 30vh;
-    margin-left: 7rem;
-}
-.price{
-    font-size: 1rem;
-    text-align: center;
 }
 
-.description-text {
-    font-size: 16px;
-    text-align: center;
-}
 
-.ingredients-text {
-    font-size: 14px;
-}
 
-.auth-model {
-    width: 50%;
-}
+@media screen and (min-width: 1024px) {
+
+    .img-container {
+        height: 30vh;
+        width: 30vh;
+        margin-left: 7rem;
+    }
+
+    .price {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .description-text {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .ingredients-text {
+        font-size: 14px;
+    }
+
+    .auth-model {
+        width: 50%;
+    }
 
 }
