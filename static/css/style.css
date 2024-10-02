@@ -233,12 +233,6 @@ body {
 
 @media screen and (min-width: 1024px) {
 
-    .img-container {
-        height: 30vh;
-        width: 30vh;
-        margin-left: 7rem;
-    }
-
     .price {
         font-size: 1rem;
         text-align: center;

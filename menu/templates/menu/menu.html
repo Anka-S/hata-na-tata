@@ -38,7 +38,7 @@
         {% for item in menu_items %}
         {% if item.section == section %}
         <div class="row menu-item mb-4">
-            <div class=" col-md-4 col-3 img-container pt-4">
+            <div class=" col-3 mx-auto img-container pt-4">
                 {% if "placeholder" in item.image.url %}
                 <img src="{% static 'media/logo.webp' %}" alt="placeholder-image" class="img-fluid opacity">
                 {% else %}
@@ -50,7 +50,7 @@
                 <div class="description-text">{{ item.description | safe}}</div>
                 <div class="ingredients-text">Ingredients: {{ item.ingredients | safe}}</div>
             </div>
-            <div class="col-md-3 col-2 p-0">
+            <div class="col-2 p-0">
                 <h4 class="price">{{ item.price }} &pound;</h4>
             </div>
         </div>

@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <!-- Condition for making a reservation -->
-                <div class="row my-5 mx-auto py-5">
+                <div class="row my-2 mx-auto py-5">
                     {% if user.is_authenticated %}
                     <p class="text-center"><a href="{% url 'booking' %}" class="link">Click here </a>to book a table</p>
                     {% else %}
@@ -76,13 +76,13 @@
                                 <tr class="fs-6">
                                     <td>Mon-Fri: </td>
                                     <td class="fw-lighter">10:00</td>
-                                    <td class="text-center"> - </td>
+                                    <td class="px-3"> - </td>
                                     <td class="fw-lighter"> 21:00</td>
                                 </tr>
                                 <tr class="fs-6">
                                     <td>Weekend: </td>
                                     <td class="fw-lighter">11:00</td>
-                                    <td class="text-center"> - </td>
+                                    <td class="px-3"> - </td>
                                     <td class="fw-lighter"> 22:00</td>
                                 </tr>
                             </tbody>
@@ -91,7 +91,7 @@
                         <div class="mb-3">
                             <h5 class="text-center">Contact Us:</h5>
                             <span>Phone: </span>
-                            <span class="fs-6 fw-lighter">075 555 55 555</span>
+                            <span class="fs-6 fw-lighter link">075 555 55 555</span>
                             <br>
                             <span>Email: </span>
                             <a href="mailto: hatanatata@gmail.com" class="link fs-6 fw-lighter">hatanatata@gmail.com</a>

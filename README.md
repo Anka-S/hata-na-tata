@@ -6,8 +6,7 @@ Cosy website for Ukrainian restaurant "Hata na Tata" with national Ukrainian cui
 
 The live link can be found here - [Hata na Tata](https://hata-na-tata-ca376c445d63.herokuapp.com/) 
 
-<img src = "">
-
+![Hata na Tata responsive screenshot](docs/final_views/amiresponsive.webp)
 ## Purpose of the project
 Hata na Tata is a web application that was built for a fictitious restaurant with Ukrainian national cuisine "Hata na Tata".  The purpose of this website is to engage people to familiarise themselves with Ukrainian cuisine, book a table and leave reviews on the restaurant's site after visiting. The development is focusing on Django and Bootstrap frameworks, Database manipulation and CRUD functionality.
 

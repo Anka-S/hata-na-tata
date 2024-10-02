@@ -2,9 +2,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div id="booking-section" class="card-body">
+<div id="booking-section">
     <div class="row">
-        <div class="card col-md-4 col-10 offset-md-4 offset-1 mb-5">
+        <div class="card col-md-4 col-10 offset-md-4 offset-1 mb-5 p-4">
         <h2 class="text-center">Make a Reservation</h2>
         <form method="post" id="booking-form">
             {% csrf_token %}
