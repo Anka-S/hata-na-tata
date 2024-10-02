@@ -89,11 +89,14 @@
     </div>
 
     <main class="flex-shrink-0 main-bg">
+        <p class="text-end mx-3 opacity">
         {% if user.is_authenticated %}
-        <p class="text-end m-3 opacity">You are logged in as {{ user }} </p>
+        You are logged in as {{ user }}
         {% else %}
-        <p class="text-end m-3 opacity">You are not logged in </p>
+        You are not logged in 
         {% endif %}
+    </p>
+        
 
         {% block content %}
         <!-- Content Goes here -->

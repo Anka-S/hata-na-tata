@@ -72,12 +72,12 @@
 </div>
 
 <!-- Creating New Review -->
+{% if user.is_authenticated %}
 <div class="container mt-5">
   <div class="row m-0">
     <div class="col-md-8 col-lg-6 mx-auto">
       <div class="card m-0">
         <div class="card-body" id="write-review">
-          {% if user.is_authenticated %}
           <h3 class="card-title">Leave a review:</h3>
           <p class="opacity">Posting as: {{ user.username }}</p>
           <form id="reviewForm" method="post">
@@ -95,12 +95,13 @@
             {{ review_form.body|as_crispy_field }}
             <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>          
           </form>
-          {% endif %}
         </div>
       </div>
     </div>
   </div>
 </div>
+{% endif %}
+
 
 <!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1"
