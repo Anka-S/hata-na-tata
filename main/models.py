@@ -1,8 +1,8 @@
-from django.db import models
 from datetime import datetime
-from django.utils import timezone
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
+from django.db import models
+
 
 # Create your models here.
 
@@ -11,7 +11,7 @@ GUESTS_CHOICES = (
     ("3", "3"),
     ("4", "4"),
     ("5", "5"),
-    ("6","6"),
+    ("6", "6"),
 )
 
 TIME_CHOICES = (
@@ -20,16 +20,43 @@ TIME_CHOICES = (
     ("7 PM", "7 PM"),
     ("8 PM", "8 PM")
 )
-class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+
+
+class Booking (models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='user'
+    )
     name = models.CharField(max_length=100, null=False, blank=False)
-    phone = models.CharField(max_length=13, default='', null=False, validators=[RegexValidator(r"^[0-9]+$", "You can put only numbers and '+' symbol!")])
+    phone = models.CharField(
+        max_length=13,
+        default='',
+        null=False,
+        validators=[
+            RegexValidator(
+                r"^[0-9]+$",
+                "You can put only numbers and '+' symbol!"
+            )
+        ]
+    )
     email = models.EmailField(null=False)
     day = models.DateField(default=datetime.now, blank=True)
-    time = models.CharField(max_length=10, choices=TIME_CHOICES, default="6 PM")
-    guests = models.CharField(max_length=50, choices=GUESTS_CHOICES, default="2")
+    time = models.CharField(
+        max_length=10,
+        choices=TIME_CHOICES,
+        default="6 PM"
+    )
+    guests = models.CharField(
+        max_length=50,
+        choices=GUESTS_CHOICES,
+        default="2"
+    )
     created_on = models.DateTimeField(auto_now_add=True)
+
     class Meta:
         ordering = ["-day"]
+
     def __str__(self):
-        return f"{self.name} | {self.day} | {self.time} | {self.created_on}"
+        return (
+            f"{self.name} | {self.day} | {self.time} | {self.created_on}"
+        )
+        

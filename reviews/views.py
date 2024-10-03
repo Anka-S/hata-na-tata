@@ -7,11 +7,13 @@ from .forms import ReviewForm
 
 # Create your views here.
 
+
 class ReviewPage(TemplateView):
     """
     Displays review page
     """
     template_name = 'reviews/reviews.html'
+
 
 def review_view(request):
     reviews = Review.objects.all().order_by("-created_on")
@@ -22,9 +24,10 @@ def review_view(request):
             review = review_form.save(commit=False)
             review.author = request.user
             review.save()
-            messages.add_message(request, messages.SUCCESS,
-        'Review is submitted and awaiting approval')
-            return redirect(reverse('reviews')+'#top')            
+            messages.add_message(request,
+                                 messages.SUCCESS,
+                                 'Review is submitted and awaiting approval')
+            return redirect(reverse('reviews')+'#top')
 
     context = {
         "reviews": reviews,
@@ -32,6 +35,7 @@ def review_view(request):
     }
 
     return render(request, "reviews/reviews.html", context)
+
 
 def review_edit(request, review_id):
     """
@@ -48,7 +52,8 @@ def review_edit(request, review_id):
             messages.success(request, 'Review updated and awaiting approval!')
             return redirect('reviews')
         else:
-            messages.error(request, 'Error updating review. Please check the form.')
+            messages.error(request,
+                           'Error updating review. Please check the form.')
     else:
         review_form = ReviewForm(instance=review)
 
@@ -59,6 +64,7 @@ def review_edit(request, review_id):
     }
     return render(request, template, context)
 
+
 def review_delete(request, review_id):
     """
     View to delete a review
@@ -67,8 +73,11 @@ def review_delete(request, review_id):
 
     if review.author == request.user:
         review.delete()
-        messages.add_message(request, messages.SUCCESS, 'Review deleted successfully.')
+        messages.add_message(request,
+                             messages.SUCCESS, 'Review deleted successfully.')
     else:
-        messages.add_message(request, messages.ERROR, 'Invalid request method for deleting review.')
+        messages.add_message(
+            request,
+            messages.ERROR, 'Invalid request method for deleting review.')
 
     return HttpResponseRedirect(reverse('reviews'))

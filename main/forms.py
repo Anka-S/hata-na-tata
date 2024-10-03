@@ -1,7 +1,8 @@
-from .models import Booking 
-from django import forms 
-from django.core.validators import MinLengthValidator
 from datetime import datetime, timedelta
+from django import forms
+from django.core.validators import MinLengthValidator
+from .models import Booking
+
 
 class BookingForm(forms.ModelForm):
     class Meta:
@@ -29,7 +30,8 @@ class BookingForm(forms.ModelForm):
         if day < today:
             raise forms.ValidationError('You cannot choose a date in the past.')
         if day > today + timedelta(days=30):
-            raise forms.ValidationError('Please, choose a date less than 30 days in the future.')
+            raise forms.ValidationError(
+                'Please, choose a date less than 30 days in the future.')
         return day
     
     
