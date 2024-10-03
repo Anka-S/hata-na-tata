@@ -4,6 +4,7 @@
 {% block content %}
 <div id="booking-section">
     <div class="row">
+        <h1 class="d-none">Make a Reservation</h1>
         <div class="card col-md-4 col-10 offset-md-4 offset-1 mb-5 p-4">
         <h2 class="text-center">Make a Reservation</h2>
         <form method="post" id="booking-form">
@@ -11,6 +12,7 @@
             {{ form|crispy }}
             <button type="submit" class="btn btn-primary update-btn mb-2" id="submitBooking">Book Now</button>
         </form> 
+</div>
 </div>
 </div>
 

@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
              }
          });
  });
- };
+ }
 
 //  Delete review button
    
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteConfirm.href = `reviews/delete_review/${reviewId}`;
             deleteModal.show();
         });
-    };
-})
+    }
+});
     
 
