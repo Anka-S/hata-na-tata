@@ -275,47 +275,6 @@ I chose to follow the MoSCoW Prioritization method for Freefido, identifying and
  - __Won't Haves:__ the features or components that either no longer fit the project's brief or are of very low priority for this release.
 ![Project Board](docs/agile/project-board.png)
 
-## Testing 
-
-This app was tested on different devices:
-
-__Desktop__
-
-__Redmi 8 Pro__
-
-__iPhone 12 Pro__
-
-__iPad Air 2__
-
-__iPhone SE__
-
-<hr>
-
-### Validator Testing 
-
-- HTML
-  - [W3C validator](https://validator.w3.org/#validate_by_input)
- 
-
-- CSS
-  - [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)
- 
-
-- JavaScript
-   -  [JSHint](https://jshint.com/)
-  
-
-- LightHouse
-  - The lighthouse test is used to give a score for performance, SEO, accessibility and best practices.
-
-
-
-- Wave
-  
- 
-
-## Unfixed Bugs
-
 
 # Deployment
 
@@ -340,13 +299,13 @@ To begin this project from scratch, you must first create a new GitHub repositor
 2. Once you have installed any relevant dependencies or libraries, such as the ones listed above, it is important to create a **requirements.txt** file and add all installed libraries to it with the ```pip3 freeze --local > requirements.txt``` command in the terminal.  
 3. Create a new Django project in the terminal ```django-admin startproject hatanatata .```
 4. Create a new app eg. ```python3 mangage.py startapp review```
-5. Add this to list of **INSTALLED_APPS** in **settings.py** - 'booking',
+5. Add this to list of **INSTALLED_APPS** in **settings.py** - 'review',
 6. Create a superuser for the project to allow Admin access and enter credentials: ```python3 manage.py createsuperuser```
 7. Migrate the changes with commands: ```python3 manage.py migrate```
 8. An **env.py** file must be created to store all protected data such as the **DATABASE_URL** and **SECRET_KEY**. These may be called upon in your project's **settings.py** file along with your Database configurations. The **env.py** file must be added to your **gitignore** file so that your important, protected information is not pushed to public viewing on GitHub. For adding to **env.py**:
 
 - ```import os```
-- ```os.environ["DATABASE_URL"]="<copiedURL>"```
+- ```os.environ["DATABASE_URL"]="<copiedURLfromCI>"```
 - ```os.environ["SECRET_KEY"]="my_super^secret@key"```
 
 For adding to **settings.py**:
@@ -376,12 +335,12 @@ os.path.join(BASE_DIR, 'templates', 'allauth')
 
 - Create the media, static and templates directories in top level of project file in IDE workspace.
 
-11. A **Procfile** must be created within the project repo for Heroku deployment with the following placed within it: ```web: gunicorn freefido.wsgi```
+11. A **Procfile** must be created within the project repo for Heroku deployment with the following placed within it: ```web: gunicorn hatanatata.wsgi```
 12. Make the necessary migrations again.
 
 ## Cloudinary API 
 
-Cloudinary provides a cloud hosting solution for media storage. All users uploaded images in the FreeFid project are hosted here.
+Cloudinary provides a cloud hosting solution for media storage. All uploaded images for the menu items are hosted here.
 
 Set up a new account at [Cloudinary](https://cloudinary.com/) and add your Cloudinary API environment variable to your **env.py** and Heroku Config Vars.
 In your project workspace: 
@@ -397,11 +356,8 @@ In your project workspace:
 - Set Cloudinary as storage for media and static files in settings.py:
 - ```STATIC_URL = '/static/'```
 ```
-  STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'  
   STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]  
   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')‌  
-  MEDIA_URL = '/media/'  
-  DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 ```
 ## Heroku deployment
 
@@ -425,17 +381,127 @@ To start the deployment process , please follow the below steps:
 9.  Choose from '**Automatic**' or '**Manual**' deployment options, I chose the 'Manual' deployment method. Click '**Deploy Branch**'.
 10. Once the waiting period for the app to build has finished, click the '**View**' link to bring you to your newly deployed site. If you receive any errors, Heroku will display a reason in the app build log for you to investigate. **DISABLE_COLLECTSTATIC**  may be removed from the Config Vars once you have saved and pushed an image within your project, as can **PORT:8000**.
 
-## Credits 
+# Technologies Used
+
+- HTML5
+- CSS3
+- Python
+  - asgiref==3.8.1
+  - gunicorn==20.1.0
+  - psycopg==3.2.2
+  - PyJWT==2.9.0
+  - python3-openid==3.2.0
+  - requests-oauthlib==2.0.0
+  - sqlparse==0.5.1
+  - urllib3==1.26.20
+  - whitenoise==5.3.0
+- Django
+  - dj-database-url==0.5.0
+  - Django==4.2.14
+  - django-allauth==0.57.2
+  - django-crispy-forms==2.3
+  - dj3-cloudinary-storage==0.0.6
+  - django-extensions==3.2.3
+  - django-summernote==0.8.20.0
+- Cloudinary
+  - cloudinary==1.41.0
+- Heroku
+- GitHub
+- GitHub Projects
 
 
-### Content 
+# Testing 
+## Validator Testing 
 
-- Icon for webpage created with Favicon generator (https://realfavicongenerator.net/)
+### HTML
+
+For my HTML files I have used [HTML W3C Validator](https://validator.w3.org) to validate all of my HTML files.
+
+I have had to follow a different approach for validating my HTML for this project as the majority of my pages are developed using Jinja syntax such as '{% extends "base.html" %}' and '{{ form|crispy }}' and most require user authentication. The HTML validator will throw errors if I were to use my website's URL so I have had to follow the below approach for every page:
+
+- Via the deployed Heroku app link, I have navigated to each individual page.
+- Right clicking on the screen/CTRL+U/⌘+U on Mac, allows a menu to appear, giving me the option to 'View page source'.
+- The complete HTML code for the deployed page will appear, allowing you to select the entire code using CTRL+A/⌘+A on Mac.
+- Paste the copied code into the [validate by input](https://validator.w3.org/#validate_by_input) option.
+- Check for errors and warnings, fix any issues, revalidate by following the above steps and record the results.
+
+![Html validation](docs/testing/html-validator.webp)
+
+All HTML pages were validated and received a 'No errors or warning to show' result as shown above.
+
+<hr>
+
+### CSS
+
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to validate my CSS file. External CSS for Bootstrap, provided by [CDN](https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css) was not tested. Warnings were present because of using vendor extentions for different browsers
+![CSS Validation](docs/testing/css-validator.webp)
+![CSS warnings](docs/testing/css-validator-warnings.webp)
+ 
+<hr>
+
+### JavaScript
+
+[JSHint](https://jshint.com/) was used to validate the small amount of JavaScript code added to the project. External JS, for Bootstrap purposes, obtained via [CDN](https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js) was not validated through JSHint
+![JS Validator](docs/testing/js-validator.webp)
+
+<hr>
+
+### Python Validation
+
+[CI Python Linter](https://pep8ci.herokuapp.com/#) was used to validate the Python files that were created or edited by myself. No issues presented and line lengths were double checked. I have included some screenshots with the results below.
+
+| Feature | admin.py | forms.py | models.py | urls.py | views.py |
+|---------|----------|----------|-----------|---------|----------|
+| Booking  | [no errors](docs/testing/main-admin.webp) | [no errors](docs/testing/booking-form.webp) | [no errors](docs/testing/booking-model.webp) | [no errors](docs/testing/main-urls.webp) | [no errors](docs/testing/booking-view.webp) |
+| Review | [no errors](docs/testing/review-admin.webp) | [no errors](docs/testing/review-form.webp) | [no errors](docs/testing/review-models.png) | [no errors](docs/testing/review-url.png) | [no errors](docs/testing/review-view.png) |
+| Menu | [no errors](docs/testing/menu-admin.webp) | na | [no errors](docs/testing/menu-model.webp) | [no errors](docs/testing/menu-urls.webp) | [no errors](docs/testing/menu-view.webp) |
+
+<hr>
+
+
+### LightHouse
+
+Lighthouse testing was carried out in Incognito mode to acheive the best result. Performance was lower than preferred due to the site used Cloudinary storage. Images used in the sites design were saved in webp and png format, and compressed using [tinypng](https://tinypng.com/) and [To WebP](https://towebp.io/) to offer the best chance for a decent performance score.
+![Lighthouse desktop](docs/testing/lighthouse-desktop.webp)
+![Lighthouse mobile](docs/testing/lighthouse-mobile.webp)
+
+### Wave Accessibility Evaluation
+
+![WAVE Web Accessibility Evaluation Tools](docs/testing/wave.webp)
+  
+## Manual Testing
+All features were tested on different devices(mobile, laptop, tablet)
+| Feature | Tested? | Screenshots | User Feedback Provided | Pass/Fail |
+|---------|---------|-------------|------------------------| ----------|
+| Booking | Yes | [Filled form](docs/final_views/mobile/mobile-booking-test.webp) [Date in the past](docs/testing/invalid-date-msg.webp) [Invalid number](docs/testing/invalid-phone-msg.webp) [Date in the future](docs/testing/invalid-date.webp) [Success](docs/final_views/mobile/mobile-booking-approval.webp) | When the user tries to make a book table in the past, or more than a month in advance, or puts in an invalid phone number booking won't submit. When all data is correct, the booking is submitted and redirected to the main page.| Pass|
+| Review | Yes | [Write review](docs/testing/write-review-test.webp) [Edit review](docs/final_views/mobile/mobile-review-edit.webp) [Delete review](docs/final_views/mobile/mobile-delete-alert.webp) [Review is awaiting for approval](docs/final_views/mobile/mobile-review-approval.webp) | Authorised users can write reviews, edit or delete it.| Pass|
+| Logo | Yes | - | When you're clicking on the logo image in navbar, it will redirect you to the home page| Pass|
+| Menu Page | Yes | [Menu view](docs/final_views/mobile/mobile-menu-desserts.webp) [Image zoomed](docs/final_views/mobile/mobile-menu-zoomedimg.webp) | If you want to see better the image for dish, you can click on it and it will zoomed. When you clicking again, it returns in regular size. On small devices you can use scrollbar for menu sections. Also colour of active links are slightly different from regular links. | Pass |
+
+<hr>
+
+
+
+
+
+
+
+# Credits 
+- I was inspired by the Codestar Blog project from [Code Institute](https://learn.codeinstitute.net/) for creating a lot of content for my project
+- From [FreeFido](https://github.com/amylour/FreeFido_v2/blob/main/README.md?plain=1#deployment) by [Amylour](https://github.com/amylour) I take her README as an example how to write it because it's written so good and well organised. Also, I take a look at how to add a validator for a date, to avoid making bookings in the past.
+
+- I wanted to include star rating for my project, so I found the solution in the [CI capstone project](https://github.com/doctypeKieran/ci-capstone-project) by [Kieran](https://github.com/doctypeKieran)
+
+
+
+## Content 
+
+- Icon for webpage created with [Favicon generator](https://realfavicongenerator.net/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 - The CDN framework used for ready-made styling was [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/download/)
-- Balsamiq used for wireframe
-- [Perplexity](https://www.perplexity.ai/) used for debugging 
-- [Miro boards](https://miro.com/app/board/uXjVK1tCs_I=/) used for planning the work process
-
-
-### Media
+- [Balsamiq](https://balsamiq.com/) used for wireframe
+- [Perplexity](https://www.perplexity.ai/) used for writing description for menu items and introduction. 
+- [Trello](https://trello.com/u/anitravoin/boards) used for planning the work process
+- [Canva](https://www.canva.com/) used for creating logo for website and for favicon
+- [Removebg](https://www.remove.bg/) used for making background transparent on the logo image
+- [Adobe Firefly](https://firefly.adobe.com/) used for creating images for the background and for menu items
