@@ -7,6 +7,7 @@ Cosy website for Ukrainian restaurant "Hata na Tata" with national Ukrainian cui
 The live link can be found here - [Hata na Tata](https://hata-na-tata-ca376c445d63.herokuapp.com/) 
 
 ![Hata na Tata responsive screenshot](docs/final_views/amiresponsive.webp)
+
 ## Purpose of the project
 Hata na Tata is a web application that was built for a fictitious restaurant with Ukrainian national cuisine "Hata na Tata".  The purpose of this website is to engage people to familiarise themselves with Ukrainian cuisine, book a table and leave reviews on the restaurant's site after visiting. The development is focusing on Django and Bootstrap frameworks, Database manipulation and CRUD functionality.
 
@@ -17,19 +18,34 @@ Hata na Tata is a web application that was built for a fictitious restaurant wit
 - [Hata na Tata](#hata-na-tata)
   - [Purpose of the project](#purpose-of-the-project)
   - [Table of Contents](#table-of-contents)
-- [UX/UI](#uxui)
-  - [UX - User Expirience](#ux---user-expirience)
+- [UX/UI](#ux---user-expirience)
+  - [User Stories](#user-stories)
+  - [Design Inspiration](#design-inspiration)
   - [Wireframes](#wireframes)
+  - [Final View](#final-view)
 - [Features](#features)
   - [Existing features](#existing-features)
   - [Features left to implement](#features-left-to-implement)
+- [Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
+- [Agile Methodologies - Project Management](#agile-methodologies---project-management)
+  - [MoSCoW Prioritization](#moscow-prioritization)
+- [Deployment](#deployment)
+  - [Connecting to GitHub](#connecting-to-github)
+  - [Django Project Setup](#django-project-setup)
+  - [Cloudinary API](#cloudinary-api)
+  - [Heroku deployment](#heroku-deployment)
+- [Technologies Used](#technologies-used)
 - [Testing](#testing)
   - [Validator testing](#validator-testing)
-- [Unfixed bugs](#unfixed-bugs)
-- [Deployment](#deployment)
+    - [HTML](#html)
+    - [CSS](#css)
+    - [JavaScript](#javascript)
+    - [Python](#python-validation)
+    - [Lighthouse](#lighthouse)
+    - [Wave](#wave-accessibility-evaluation)
+  - [Manual Testing](#manual-testing)
 - [Credits](#credits)
   - [Content](#content)
-  - [Media](#media)
 
 
 # UX - User Expirience
@@ -79,11 +95,6 @@ Colour Blind Safe and contrast was checked by [Adobe Color](<https://color.adobe
 ### Font
 
 Using [Google Font](<https://fonts.google.com/>), I imported "Montserrat" and "Bricolage Grotesque" to my CSS file. I set "Montserrat" as my default font. I used "Bricolage Grotesque" as a font for content on my menu page and for authorisation pages.
-
-
-
-
-
 
 ## Wireframes
 
@@ -150,6 +161,54 @@ __Phone View:__
     <summary>Phone view of reviews page for logged out user</summary>  
     <img src="docs/wireframes/mreviews.webp">  
 </details>
+
+## Final View
+
+__Desktop__
+
+<details open>
+    <summary>Browser view of home page</summary>  
+    <img src="docs/final_views/desktop/desktop-main.webp">  
+    <img src="docs/final_views/desktop/desktop-main1.webp">  
+    <img src="docs/final_views/desktop/desktop-main2.webp">  
+</details>
+
+<details>
+    <summary>Browser view of booking page</summary>  
+    <img src="docs/final_views/desktop/desktop-booking.webp">  
+</details>
+
+<details>
+    <summary>Browser view of menu page</summary>  
+    <img src="docs/final_views/desktop/desktop-menu.webp">  
+</details>
+
+<details>
+    <summary>Browser view of reviews page</summary>  
+    <img src="docs/final_views/desktop/desktop-review.webp">  
+</details>
+
+<details>
+    <summary>Sign Up form</summary>  
+    <img src="docs/final_views/mobile/mobile-signup.webp">  
+</details>
+
+<details>
+    <summary>Sign In form</summary>  
+    <img src="docs/final_views/mobile/mobile-signin.webp">  
+</details>
+<details>
+    <summary>Sign Out form</summary>  
+    <img src="docs/final_views/mobile/mobile-signout.webp">  
+</details>
+
+<details>
+    <summary>Form for writing review</summary>  
+    <img src="docs/final_views/tablet/tablet-write-review.webp">  
+</details>
+
+
+
 
 # Features 
 
@@ -359,6 +418,7 @@ In your project workspace:
   STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]  
   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')‌  
 ```
+
 ## Heroku deployment
 
 To start the deployment process , please follow the below steps:
@@ -458,7 +518,6 @@ All HTML pages were validated and received a 'No errors or warning to show' resu
 
 <hr>
 
-
 ### LightHouse
 
 Lighthouse testing was carried out in Incognito mode to acheive the best result. Performance was lower than preferred due to the site used Cloudinary storage. Images used in the sites design were saved in webp and png format, and compressed using [tinypng](https://tinypng.com/) and [To WebP](https://towebp.io/) to offer the best chance for a decent performance score.
@@ -476,15 +535,9 @@ All features were tested on different devices(mobile, laptop, tablet)
 | Booking | Yes | [Filled form](docs/final_views/mobile/mobile-booking-test.webp) [Date in the past](docs/testing/invalid-date-msg.webp) [Invalid number](docs/testing/invalid-phone-msg.webp) [Date in the future](docs/testing/invalid-date.webp) [Success](docs/final_views/mobile/mobile-booking-approval.webp) | When the user tries to make a book table in the past, or more than a month in advance, or puts in an invalid phone number booking won't submit. When all data is correct, the booking is submitted and redirected to the main page.| Pass|
 | Review | Yes | [Write review](docs/testing/write-review-test.webp) [Edit review](docs/final_views/mobile/mobile-review-edit.webp) [Delete review](docs/final_views/mobile/mobile-delete-alert.webp) [Review is awaiting for approval](docs/final_views/mobile/mobile-review-approval.webp) | Authorised users can write reviews, edit or delete it.| Pass|
 | Logo | Yes | - | When you're clicking on the logo image in navbar, it will redirect you to the home page| Pass|
-| Menu Page | Yes | [Menu view](docs/final_views/mobile/mobile-menu-desserts.webp) [Image zoomed](docs/final_views/mobile/mobile-menu-zoomedimg.webp) | If you want to see better the image for dish, you can click on it and it will zoomed. When you clicking again, it returns in regular size. On small devices you can use scrollbar for menu sections. Also colour of active links are slightly different from regular links. | Pass |
+| Menu Page | Yes | [Menu view](docs/final_views/mobile/mobile-menu-desserts.webp) [Image zoomed](docs/final_views/mobile/mobile-menu-zoomedimg.webp) | If you want to see better the image of the dish, you can click on it and it will zoomed. When you click again, it returns in regular size. On small devices, you can use a scrollbar for menu sections. Also colour of active links is slightly different from regular links. | Pass |
 
 <hr>
-
-
-
-
-
-
 
 # Credits 
 - I was inspired by the Codestar Blog project from [Code Institute](https://learn.codeinstitute.net/) for creating a lot of content for my project
