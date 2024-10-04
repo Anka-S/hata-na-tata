@@ -30,19 +30,16 @@ Hata na Tata is a web application that was built for a fictitious restaurant wit
 - [Credits](#credits)
   - [Content](#content)
   - [Media](#media)
-  
 
 
-## UX/UI
+# UX - User Expirience
 
-### UX - User Expirience
-
-The site will be presented as simple but attractive and easy to navigate. 
-
-__User Stories:__
+## User Stories:
 
 - Product Owner:
   - As a Product Owner, I want to see that my site is working properly on different devices, so users will have the best experience
+  - As a Product Owner, I want to display menu section as a navbar, so it will be easier for the User to navigate through the website.
+  - As a Product Owner, I want to tell the User about the creators of the restaurant, so User will be engaged to visit the restaurant
 
 - Admin
   - As an Admin, I want to add/update/delete the information on the Menu page, so the user can choose from the valid dishes
@@ -55,15 +52,48 @@ __User Stories:__
    - As a User, I want to leave a review, so I can share my experience with other users
    - As a User, I want to book the table, so I can plan my time
    - As a User, I want to register an account, so I can book the table and leave reviews
-   - As a User, I want to see if I am logged in or not, so I will have a positive UX
+   - As a User, I want to see if I am logged in or not, so I will have a positive UX 
 
-<hr>   
+## Design Inspiration
 
-### Wireframes
+When I planned to create this project, I dicided to use Ukrainian national rushnyk and kalyna on the table as a background. After this I picked up the colours for text and content. 
+
+![Hata na Tata background image](static/media/bg.webp)
+*Background image*
+
+### Colour Scheme
+
+As a main colours, I used ```white``` colour for my text and ```rgba(0, 0, 0, 0.518)``` for block background to make content more readable.
+
+Colour Blind Safe and contrast was checked by [Adobe Color](<https://color.adobe.com/create/color-accessibility>)
+
+![Color Blind Safe](docs/color-blind-safe.webp)
+*Accessibility check for colour scheme*
+
+![Contrast Checker](docs/contrast-checker.webp)
+*Contrast checker*
+
+![Colour Scheme](docs/colour-scheme.webp)
+*Colour Scheme*
+
+### Font
+
+Using [Google Font](<https://fonts.google.com/>), I imported "Montserrat" and "Bricolage Grotesque" to my CSS file. I set "Montserrat" as my default font. I used "Bricolage Grotesque" as a font for content on my menu page and for authorisation pages.
+
+
+
+
+
+
+## Wireframes
 
 __Browser View:__
 
-![Browser view of home page for logged in user](docs/wireframes/home-loggedin.webp)
+<details open>
+    <summary>Browser view of home page for logged in user</summary>  
+    <img src="docs/wireframes/home-loggedin.webp">  
+</details>
+
 ![Browser view of home page for logged out user](docs/wireframes/home.webp)
 ![Browser view of menu page](docs/wireframes/menu.webp)
 ![Browser view of reviews page for logged in user](docs/wireframes/reviews-loggedin.webp)
