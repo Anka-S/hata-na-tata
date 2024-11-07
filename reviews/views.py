@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
@@ -36,12 +37,16 @@ def review_view(request):
 
     return render(request, "reviews/reviews.html", context)
 
-
+@login_required
 def review_edit(request, review_id):
     """
-    View to edit reviews
+    View to edit reviews. Requires user to be logged in.
     """
     review = get_object_or_404(Review, pk=review_id)
+
+    if review.author != request.user:
+        messages.error(request, "You don't have permission to edit this review.")
+        return redirect('reviews')
 
     if request.method == "POST":
         review_form = ReviewForm(request.POST, instance=review)
@@ -51,9 +56,6 @@ def review_edit(request, review_id):
             updated_review.save()
             messages.success(request, 'Review updated and awaiting approval!')
             return redirect('reviews')
-        else:
-            messages.error(request,
-                           'Error updating review. Please check the form.')
     else:
         review_form = ReviewForm(instance=review)
 

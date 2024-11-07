@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
@@ -13,7 +14,7 @@ class HomePage(TemplateView):
     """
     template_name = 'main/index.html'
 
-
+@login_required
 def booking(request):
     form = BookingForm()
     if request.method == 'POST':

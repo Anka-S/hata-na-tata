@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+{% if user.is_authenticated and review.author == user%}
 <div class="container col-md-4 col-12 offset-md-4 mt-3">
     <h2>Edit Review</h2>
     <form method="post">
@@ -20,4 +21,5 @@
 
     </form>
 </div>
+{% endif %}
 {% endblock %}
